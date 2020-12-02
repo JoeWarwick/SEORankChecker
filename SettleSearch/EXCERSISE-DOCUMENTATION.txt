@@ -1,0 +1,29 @@
+Description:
+
+SEO Rank Checker
+This tool is written with a backend in .NET5.0 (dotnet core) and a simple frontend in ReactJS.
+To run it a couple of steps are needed.
+It is preferable to use VSCode, as MS has deprecated the ability to load SPA sites using Visual Studio in .NET5.0 currently.
+Visual Studio can be used for debugging the backend - to do so the frontend proxy must be correctly set to the backend SSL port that Visual Studio exposes (usually 44316).
+Visual Studio can also be used to run the unit tests, however the latest version of VS is necessary to support .NET5.0.
+The proxy must be set in the package.json file. It is currently set to "proxy": "https://localhost:5001" which is what running the dotnet code via VSCode will use.
+
+To run using VSCode:
+    Navigate to the ~\SettleSearch directory
+    Open VSCode in this directory by typing 'code .' in a command shell.
+    Open the terminal in vscode with [ctrl] + `
+    Type 'dotnet run' and enter.
+    The webserver will start and the console logs will appear in this terminal console.
+    Add another terminal - no matter the type.
+    Type 'cd .\client-app'
+    Type 'npm start'
+    The fron-end will open.
+
+The google and bing results should load up after a short while. They will cache a copy for one hr for every distinct search term and search engine.
+If not then an error message will show. It is likely an internet issue or a proxy issue.
+
+Other searches can be tried - e.g. see the difference between 'e-settlement' rather than 'e-settlements', as can other sites.
+
+
+
+

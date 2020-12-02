@@ -1,0 +1,5 @@
+﻿enum SearchEngineType
+{
+    Google,
+    Bing
+}
