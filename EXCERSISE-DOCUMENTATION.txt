@@ -24,6 +24,20 @@ If not then an error message will show. It is likely an internet issue or a prox
 
 Other searches can be tried - e.g. see the difference between 'e-settlement' rather than 'e-settlements', as can other sites.
 
+The idea for adding other searches is to;
+a) Add a new service to handle the querying and extraction and implement the ISearchService interface.
+b) Register the service in the container at Startup.cs.
+c) Add the new service type to the SearchEngineType enumeration.
+d) Add it to the SEOSearchController as a constructor injected service same as the others.
+e) Add a unit test for it and update the constructor signatures in the other unit tests. TDD build the service.
+f) In the frontend, edit the App.js component and add another <SEOResultList searchEngine="XXX" searchTerm={item.term} searchSite={item.site} /> into the JSX inside another div. 
+g) Run and the new list should appear below the existing - check that it appears in the grid.
 
-
-
+Performance, Availability, Reliability
+1) Use search API endpoints rather than web-scrapes. This will keep the Availability and Reliability much more stable as Search engine companies
+do not change theses as much as they do their front end html.
+2) Have a webjob run unattended in the cloud to collect the results each day. This will be more discrete and make the app more performant. It will also allow
+time series data to be shown as added information on the tool.
+3) Configure the log to output to a usage analyser or alert system uch as Prometheus.
+4) Use a cloud based redis cache rather than a memorycache so as to improve the memory profile of the app and make it more resilient - able to be shut down when
+not in use making it cheaper to run.
